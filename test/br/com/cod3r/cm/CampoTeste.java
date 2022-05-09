@@ -60,5 +60,4 @@ public class CampoTeste {
 		assertFalse(resultado);
 		
 	}
-		
 }
