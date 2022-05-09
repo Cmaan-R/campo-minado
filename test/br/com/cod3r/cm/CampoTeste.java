@@ -104,8 +104,22 @@ public class CampoTeste {
 		assertFalse(campo.abrir());
 	}
 	
-//	void testeAbrirComVizinhos() {
-//		
-//		Campo vizinho1 = new Campo()
-//	}
+	@Test
+	void testeAbrirComVizinhos() {
+		
+		Campo campo11 = new Campo(2 , 2);
+		Campo campo12 = new Campo(1, 2);
+		campo12.minar();
+		
+		
+		Campo campo22 = new Campo(1, 1);
+		campo22.adicionarVizinho(campo12);
+		campo11.adicionarVizinho(campo22);
+		
+		campo.adicionarVizinho(campo11);		
+		
+		campo.abrir();
+		
+		assertTrue(!campo11.isFechado() && campo22.isAberto());
+	}
 }
