@@ -89,6 +89,20 @@ public class Campo {
 		return !aberto;
 	}
 	
+	public int getLinha() {
+		return linha;
+	}
+	
+	public int getColuna() {
+		return coluna;
+	}
+	
+	boolean objetivoAlcancado() {
+		boolean desvendado = !minado && aberto;
+		boolean protegido = minado && marcado;
+		return desvendado || protegido;
+		
+	}
 }
 	
 
