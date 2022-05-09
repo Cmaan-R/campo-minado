@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.com.cod3r.cm.excecao.ExplosaoException;
 import br.com.cod3r.cm.modelo.Campo;
 
 public class CampoTeste {
@@ -79,8 +80,32 @@ public class CampoTeste {
 	
 	@Test
 	void testeAbrirNaoMinadoNaoMarcado () {
-		assertTrue(campo.abrir());
+		campo.alternarMarcacao();
+		assertFalse(campo.abrir());
 	}
 	
+	@Test
+	void testeAbrirMinadoMarcado () {
+		campo.alternarMarcacao();
+		campo.minar();
+		assertFalse(campo.abrir());
+	}
 	
+	@Test
+	void testeAbrirMinadoNaoMarcado () {
+		campo.minar();
+		
+		assertThrows(ExplosaoException.class, () -> {
+			campo.abrir();	
+			
+		});
+		
+		
+		assertFalse(campo.abrir());
+	}
+	
+//	void testeAbrirComVizinhos() {
+//		
+//		Campo vizinho1 = new Campo()
+//	}
 }
