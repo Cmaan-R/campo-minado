@@ -28,7 +28,6 @@ public class CampoTeste {
 		Campo vizinho = new Campo(3 ,4);
 		boolean resultado  = campo.adicionarVizinho(vizinho);
 		assertTrue(resultado);
-		
 	}
 	
 	@Test
@@ -59,5 +58,22 @@ public class CampoTeste {
 		boolean resultado  = campo.adicionarVizinho(vizinho);
 		assertFalse(resultado);
 		
+	}
+	
+	@Test
+	void testeValorPadraoAtributoMarcado() {
+		assertFalse(campo.isMarcado());
+	}
+	
+	void testeAlternarMarcacao() {
+		campo.alternarMarcacao();
+		assertTrue(campo.isMarcado());
+	}
+	
+	@Test
+	void testeAlternarMarcacaoDuasChamadas () {
+		campo.alternarMarcacao();
+		campo.alternarMarcacao();
+		assertFalse(campo.isMarcado());
 	}
 }
