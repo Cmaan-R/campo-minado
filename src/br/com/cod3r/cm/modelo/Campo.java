@@ -18,7 +18,7 @@ public class Campo {
 
 	public Campo(int linha, int coluna) {
 		this.linha = linha;
-		this.coluna = coluna;
+		this.coluna = coluna; 
 	}
 	
 	public boolean adicionarVizinho(Campo vizinho) {
@@ -80,6 +80,10 @@ public class Campo {
 	
 	public boolean isMarcado() {
 		return marcado;
+	}
+	
+	public void setAberto(boolean aberto) {
+		this.aberto = aberto;
 	}
 	
 	public boolean isAberto() {

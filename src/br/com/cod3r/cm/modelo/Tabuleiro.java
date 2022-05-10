@@ -1,8 +1,11 @@
 package br.com.cod3r.cm.modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
+
+import br.com.cod3r.cm.excecao.ExplosaoException;
 
 public class Tabuleiro {
 		
@@ -22,6 +25,26 @@ public class Tabuleiro {
 		sortearMinas();
 		
 	}
+	
+	public void abrir ( int linha, int coluna) {
+		try {
+			campos.parallelStream()
+			.filter(c -> c.getLinha() == linha && c.getColuna() == coluna)
+			.findFirst().ifPresent(c -> c.abrir());;
+			
+		} catch(ExplosaoException e) {
+			campos.forEach(c -> c.setAberto(true));
+			
+			throw e;
+		}
+	}
+	public void alternarMarcacao ( int linha, int coluna) {
+		campos.parallelStream()
+		.filter(c -> c.getLinha() == linha && c.getColuna() == coluna)
+		.findFirst().ifPresent(c -> c.alternarMarcacao());;
+	}
+	
+	
 	private void gerarCampos() {
 		for (int linha  = 0; linha < linhas; linha++) {
 			for (int coluna = 0; coluna < colunas; coluna++) {
@@ -44,9 +67,9 @@ public class Tabuleiro {
 		Predicate<Campo> minado = c -> c.isMinado();
 		
 		do {
-			minasArmadas = campos.stream().filter(minado).count();
 			int aleatorio = (int) (Math.random() * campos.size());
 			campos.get(aleatorio).minar();
+			minasArmadas = campos.stream().filter(minado).count();
 		} while(minasArmadas < minas);
 		
 	}
@@ -58,4 +81,32 @@ public class Tabuleiro {
 		campos.stream().forEach(c -> c.reiniciar());
 		sortearMinas();
 	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(" ");
+		sb.append(" ");
+		for ( int c = 0; c < colunas ; c++) {
+			sb.append(" ");
+			sb.append(c);
+			sb.append(" ");
+		}
+		
+		sb.append("\n");
+		
+		for ( int l = 0 ; l < linhas; l++) {
+			sb.append(l);
+			sb.append(" ");
+			int i = 0;
+			for (int c = 0; c < colunas; c++) {
+				sb.append("");
+				sb.append(campos.get(i));
+				sb.append("");
+			}
+			sb.append("\n");
+		}
+		
+		return sb.toString();
+		}	
 }
