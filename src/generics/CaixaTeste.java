@@ -7,10 +7,6 @@ public class CaixaTeste {
 		caixaA.guardar("Segredo");
 		
 		String coisaA = caixaA.abrir();
-		System.out.println(caixaA);
-		
-		
-		
+		System.out.println(coisaA);	
 	}
-
 }
