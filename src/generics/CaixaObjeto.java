@@ -7,4 +7,8 @@ public class CaixaObjeto {
 	public void guardar (Object coisa) {
 		this.coisa = coisa;
 	}
+	
+	public Object abrir () {
+		return coisa;
+	}
 }
