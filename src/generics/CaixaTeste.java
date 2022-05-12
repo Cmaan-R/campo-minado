@@ -8,5 +8,11 @@ public class CaixaTeste {
 		
 		String coisaA = caixaA.abrir();
 		System.out.println(coisaA);	
+		
+		Caixa<Double> caixaB = new Caixa<>();
+		caixaB.guardar(3.1415);
+		
+		Double coisaB = caixaB.abrir();
+		System.out.println(coisaB);
 	}
 }
