@@ -7,9 +7,7 @@ public class Caixa<T> {
 		public void guardar (T coisa) {
 		this.coisa = coisa;
 	}
-	
 		public T abrir () {
 		return coisa;
 	}
-
 }
