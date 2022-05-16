@@ -1,5 +1,6 @@
 package generics;
 
+import java.util.Optional;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -17,6 +18,16 @@ public class Pares <C extends Number, V> {
 		}
 		
 		itens.add(novoPar);
-
 	}
+	
+	public V getValor(C chave) {
+		if(chave == null) return null;
+		
+		Optional<Par<C, V>> parOpcional = itens.stream()
+				.filter(par -> chave.equals(par.getChave()))
+				.findFirst();	
+		
+		return parOpcional.isPresent()
+				? parOpcional.get().getValor() : null;
+				}
 }
