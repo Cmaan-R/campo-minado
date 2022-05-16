@@ -11,5 +11,6 @@ public class CaixaNumeroTeste {
 		CaixaNumero<Integer> caixaB = new CaixaNumero<>();
 		caixaB.guardar(212);
 		System.out.println(caixaB.abrir()); 
+		//teste
 	} 
 }
