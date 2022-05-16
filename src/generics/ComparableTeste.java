@@ -20,5 +20,4 @@ public class ComparableTeste {
 			System.out.println(n);
 		}
 	}
-
 }
