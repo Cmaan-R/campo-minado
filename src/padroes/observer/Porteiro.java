@@ -31,6 +31,7 @@ public class Porteiro {
 				
 				//Notificar os Observadores!
 				observadores.stream().forEach(o -> o.chegou(evento));
+				valor = "sair";
 			} else {
 				System.out.println("Alarme Falso!");
 			}
